@@ -1,73 +1,145 @@
-# Welcome to your Lovable project
+# Thittam1Hub
 
-## Project info
+A unified event management and publishing platform designed to centralize the planning, management, tracking, and publishing of community or organizational events and projects.
 
-**URL**: https://lovable.dev/projects/REPLACE_WITH_PROJECT_ID
+## Project Structure
 
-## How can I edit this code?
+```
+thittam1hub/
+├── backend/          # Node.js/Express/TypeScript backend
+│   ├── src/         # Source code
+│   ├── prisma/      # Prisma schema and migrations
+│   └── package.json
+├── frontend/         # React/TypeScript frontend
+│   ├── src/         # Source code
+│   └── package.json
+└── docker-compose.yml # Local development services
+```
 
-There are several ways of editing your application.
+## Prerequisites
 
-**Use Lovable**
+- Node.js 18+ and npm
+- Docker and Docker Compose
+- PostgreSQL 14+ (via Docker)
 
-Simply visit the [Lovable Project](https://lovable.dev/projects/REPLACE_WITH_PROJECT_ID) and start prompting.
+## Getting Started
 
-Changes made via Lovable will be committed automatically to this repo.
+### 1. Start Development Services
 
-**Use your preferred IDE**
+Start PostgreSQL and Redis using Docker Compose:
 
-If you want to work locally using your own IDE, you can clone this repo and push changes. Pushed changes will also be reflected in Lovable.
+```bash
+docker-compose up -d
+```
 
-The only requirement is having Node.js & npm installed - [install with nvm](https://github.com/nvm-sh/nvm#installing-and-updating)
+### 2. Backend Setup
 
-Follow these steps:
+```bash
+cd backend
 
-```sh
-# Step 1: Clone the repository using the project's Git URL.
-git clone <YOUR_GIT_URL>
+# Install dependencies
+npm install
 
-# Step 2: Navigate to the project directory.
-cd <YOUR_PROJECT_NAME>
+# Copy environment variables
+cp .env.example .env
 
-# Step 3: Install the necessary dependencies.
-npm i
+# Generate Prisma client
+npm run prisma:generate
 
-# Step 4: Start the development server with auto-reloading and an instant preview.
+# Run database migrations
+npm run prisma:migrate
+
+# Start development server
 npm run dev
 ```
 
-**Edit a file directly in GitHub**
+The backend API will be available at `http://localhost:3000`
 
-- Navigate to the desired file(s).
-- Click the "Edit" button (pencil icon) at the top right of the file view.
-- Make your changes and commit the changes.
+### 3. Frontend Setup
 
-**Use GitHub Codespaces**
+```bash
+cd frontend
 
-- Navigate to the main page of your repository.
-- Click on the "Code" button (green button) near the top right.
-- Select the "Codespaces" tab.
-- Click on "New codespace" to launch a new Codespace environment.
-- Edit files directly within the Codespace and commit and push your changes once you're done.
+# Install dependencies
+npm install
 
-## What technologies are used for this project?
+# Copy environment variables
+cp .env.example .env
 
-This project is built with:
+# Start development server
+npm run dev
+```
 
-- Vite
+The frontend will be available at `http://localhost:5173`
+
+## Development
+
+### Backend Commands
+
+- `npm run dev` - Start development server with hot reload
+- `npm run build` - Build for production
+- `npm run start` - Start production server
+- `npm test` - Run tests
+- `npm run lint` - Lint code
+- `npm run format` - Format code with Prettier
+- `npm run prisma:generate` - Generate Prisma client
+- `npm run prisma:migrate` - Run database migrations
+- `npm run prisma:studio` - Open Prisma Studio
+
+### Frontend Commands
+
+- `npm run dev` - Start development server
+- `npm run build` - Build for production
+- `npm run preview` - Preview production build
+- `npm test` - Run tests
+- `npm run lint` - Lint code
+- `npm run format` - Format code with Prettier
+
+## Technology Stack
+
+### Backend
+- Node.js with Express.js
 - TypeScript
-- React
-- shadcn-ui
+- Prisma ORM
+- PostgreSQL
+- JWT Authentication
+- Bcrypt for password hashing
+
+### Frontend
+- React 18
+- TypeScript
+- Vite
+- TanStack Query (React Query)
+- React Router
 - Tailwind CSS
+- React Hook Form
 
-## How can I deploy this project?
+### Development Services
+- PostgreSQL 15
+- Redis 7
 
-Simply open [Lovable](https://lovable.dev/projects/REPLACE_WITH_PROJECT_ID) and click on Share -> Publish.
+## Environment Variables
 
-## Can I connect a custom domain to my Lovable project?
+### Backend (.env)
+See `backend/.env.example` for required environment variables.
 
-Yes, you can!
+### Frontend (.env)
+See `frontend/.env.example` for required environment variables.
 
-To connect a domain, navigate to Project > Settings > Domains and click Connect Domain.
+## Testing
 
-Read more here: [Setting up a custom domain](https://docs.lovable.dev/features/custom-domain#custom-domain)
+### Backend Tests
+```bash
+cd backend
+npm test
+```
+
+### Frontend Tests
+```bash
+cd frontend
+npm test
+```
+
+## License
+
+MIT
