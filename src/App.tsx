@@ -209,5 +209,3 @@ function EventEditWrapper() {
 
   return <EventForm event={event} isEditing={true} />;
 }
-
-export default App;
