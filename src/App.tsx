@@ -1,5 +1,5 @@
 import { BrowserRouter, Routes, Route, Navigate, Link, useParams } from 'react-router-dom';
-import { useQuery } from '@tanstack/react-query';
+import { useQuery, QueryClient, QueryClientProvider } from '@tanstack/react-query';
 import { AuthProvider, useAuth } from './hooks/useAuth';
 import { LoginForm } from './components/auth/LoginForm';
 import { RegisterForm } from './components/auth/RegisterForm';
@@ -14,31 +14,22 @@ import { PrivateEventAccess } from './components/events/PrivateEventAccess';
 import { CertificateVerification } from './components/certificates/CertificateVerification';
 import { OrganizationDirectory, FollowedOrganizations, OrganizationPage } from './components/organization';
 import { ErrorBoundary } from './components/common/ErrorBoundary';
-import { ApiHealthCheck } from './components/common/ApiHealthCheck';
+import { Navbar, Hero, Features, CTA, Footer } from './components/landing';
 import { UserRole } from './types';
 import api from './lib/api';
-import { validateEnvironment, ENV_CONFIG } from './lib/config';
+import { Toaster } from './components/ui/sonner';
 
-// Validate environment variables on app startup
-try {
-  validateEnvironment();
-} catch (error) {
-  console.error('Environment validation failed:', error);
-}
+const queryClient = new QueryClient();
 
 function App() {
   return (
-    <ErrorBoundary>
-      <AuthProvider>
-        <BrowserRouter>
-          <div className="min-h-screen bg-gray-50">
-            {/* API Health Check Indicator */}
-            {ENV_CONFIG.isDevelopment && (
-              <div className="fixed top-4 right-4 z-50">
-                <ApiHealthCheck showIndicator={true} />
-              </div>
-            )}
-            <Routes>
+    <QueryClientProvider client={queryClient}>
+      <ErrorBoundary>
+        <AuthProvider>
+          <BrowserRouter>
+            <div className="min-h-screen bg-background text-foreground">
+              <Toaster />
+              <Routes>
             <Route path="/" element={<Home />} />
             <Route path="/login" element={<LoginForm />} />
             <Route path="/register" element={<RegisterForm />} />
@@ -110,43 +101,33 @@ function App() {
               element={<CertificateVerification />} 
             />
             {/* Catch all route */}
-            <Route path="*" element={<Navigate to="/" replace />} />
-            </Routes>
-          </div>
-        </BrowserRouter>
-      </AuthProvider>
-    </ErrorBoundary>
+              <Route path="*" element={<Navigate to="/" replace />} />
+              </Routes>
+            </div>
+          </BrowserRouter>
+        </AuthProvider>
+      </ErrorBoundary>
+    </QueryClientProvider>
   );
 }
 
 function Home() {
-  const { isAuthenticated, user } = useAuth();
+  const { isAuthenticated } = useAuth();
 
   if (isAuthenticated) {
     return <Navigate to="/dashboard" replace />;
   }
 
   return (
-    <div className="flex items-center justify-center min-h-screen">
-      <div className="text-center">
-        <h1 className="text-4xl font-bold text-gray-900 mb-4">Thittam1Hub</h1>
-        <p className="text-gray-600 mb-8">Event Management Platform</p>
-        <div className="space-x-4">
-          <a
-            href="/login"
-            className="bg-indigo-600 text-white px-6 py-2 rounded-md hover:bg-indigo-700 transition-colors"
-          >
-            Sign In
-          </a>
-          <a
-            href="/register"
-            className="bg-white text-indigo-600 px-6 py-2 rounded-md border border-indigo-600 hover:bg-indigo-50 transition-colors"
-          >
-            Sign Up
-          </a>
-        </div>
-      </div>
-    </div>
+    <>
+      <Navbar />
+      <main>
+        <Hero />
+        <Features />
+        <CTA />
+      </main>
+      <Footer />
+    </>
   );
 }
 
