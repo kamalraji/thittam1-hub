@@ -1,4 +1,3 @@
-export { default as OrganizationProfile } from './OrganizationProfile';
 export { default as OrganizationAdminManagement } from './OrganizationAdminManagement';
 export { default as OrganizationPage } from './OrganizationPage';
 export { default as OrganizationDirectory } from './OrganizationDirectory';

@@ -21,7 +21,18 @@ import { Toaster } from './components/ui/sonner';
 
 const queryClient = new QueryClient();
 
-function App() {
+function OrganizationPageWrapper() {
+  const { organizationId } = useParams<{ organizationId: string }>();
+  const { user } = useAuth();
+  
+  if (!organizationId) {
+    return <Navigate to="/organizations" replace />;
+  }
+  
+  return <OrganizationPage organizationId={organizationId} currentUser={user ?? undefined} />;
+}
+
+export default function App() {
   return (
     <QueryClientProvider client={queryClient}>
       <ErrorBoundary>
@@ -89,7 +100,7 @@ function App() {
             />
             <Route 
               path="/organizations/:organizationId" 
-              element={<OrganizationPage />} 
+              element={<OrganizationPageWrapper />} 
             />
             {/* Public certificate verification routes */}
             <Route 
