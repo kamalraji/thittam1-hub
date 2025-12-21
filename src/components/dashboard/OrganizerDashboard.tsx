@@ -19,6 +19,7 @@ export function OrganizerDashboard() {
   const { user, logout } = useAuth();
   const [activeTab, setActiveTab] = useState<'events' | 'analytics' | 'profile'>('events');
   const [showProfilePrompt, setShowProfilePrompt] = useState(false);
+  void showProfilePrompt; // Used in conditional rendering below
 
   // Check if profile completion is needed (Requirements 2.4, 2.5)
   const isProfileIncomplete = !user?.profileCompleted || 

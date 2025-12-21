@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import { useState, useEffect } from 'react';
 import { 
   AnalyticsReport, 
   DateRangeFilter, 
@@ -15,7 +15,7 @@ interface ExportState {
   progress: number;
 }
 
-export const AnalyticsDashboard: React.FC<AnalyticsDashboardProps> = ({ eventId }) => {
+export function AnalyticsDashboard({ eventId }: AnalyticsDashboardProps) {
   const [analyticsData, setAnalyticsData] = useState<AnalyticsReport | null>(null);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState<string | null>(null);

@@ -31,7 +31,7 @@ interface Registration {
 export function ParticipantDashboard() {
   const { user, logout } = useAuth();
   const [activeTab, setActiveTab] = useState<'events' | 'certificates' | 'profile'>('events');
-  const [selectedEventId, setSelectedEventId] = useState<string | null>(null);
+  useState<string | null>(null); // Reserved for future use
 
   const { data: registrations, isLoading } = useQuery({
     queryKey: ['participant-registrations'],
