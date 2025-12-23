@@ -172,7 +172,7 @@ const OrganizationPage: React.FC<OrganizationPageProps> = ({
     );
   }
 
-  const { organization, isFollowing } = data;
+  const { organization, events, isFollowing } = data;
   const upcomingEvents = getUpcomingEvents();
   const pastEvents = getPastEvents();
 

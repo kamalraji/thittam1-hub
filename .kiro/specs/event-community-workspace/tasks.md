@@ -70,7 +70,8 @@ The implementation follows an incremental approach, building core workspace func
   - Add workspace status management (Provisioning, Active, Winding Down, Dissolved)
   - _Requirements: 1.1, 1.2, 1.3, 1.4, 10.1, 10.2, 10.3_
 
-- [ ]* 3.1 Write property test for workspace lifecycle management
+- [ ] 3.1 Write property test for workspace lifecycle management
+
   - **Property 8: Access Lifecycle Management**
   - **Validates: Requirements 10.1, 10.2, 10.3, 10.4, 10.5**
 

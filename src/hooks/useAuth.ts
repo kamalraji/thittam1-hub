@@ -51,16 +51,21 @@ export function AuthProvider({ children }: { children: ReactNode }) {
   }, []);
 
   // Query to keep user data in sync
-  useQuery({
+  const { data: userData } = useQuery({
     queryKey: ['auth', 'me'],
     queryFn: async () => {
       const response = await api.get('/auth/me');
-      const userData = response.data.user;
-      setUser(userData);
-      return userData;
+      return response.data.user;
     },
     enabled: !!user,
   });
+
+  // Update user when userData changes
+  React.useEffect(() => {
+    if (userData) {
+      setUser(userData);
+    }
+  }, [userData]);
 
   const loginMutation = useMutation({
     mutationFn: async ({ email, password }: { email: string; password: string }) => {

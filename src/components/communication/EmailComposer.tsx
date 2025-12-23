@@ -6,6 +6,8 @@ import {
   BulkEmailDTO, 
   EmailTemplate, 
   SegmentCriteria, 
+  UserRole, 
+  RegistrationStatus,
   RecipientPreview,
   BulkEmailResult
 } from '../../types';
