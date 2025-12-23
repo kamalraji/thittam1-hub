@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import { useState, useEffect } from 'react';
 import { 
   AnalyticsReport, 
   DateRangeFilter, 
@@ -476,3 +476,5 @@ export const AnalyticsDashboard: React.FC<AnalyticsDashboardProps> = ({ eventId 
     </div>
   );
 };
+
+export default AnalyticsDashboard;
