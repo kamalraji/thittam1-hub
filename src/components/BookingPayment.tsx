@@ -1,4 +1,4 @@
-import { useEffect, useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import { isFeatureEnabled } from '../utils/features';
 
 interface BookingPaymentProps {

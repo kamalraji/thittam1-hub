@@ -5,7 +5,9 @@ import api from '../../lib/api';
 import { 
   BulkEmailDTO, 
   EmailTemplate, 
-  SegmentCriteria,
+  SegmentCriteria, 
+  UserRole, 
+  RegistrationStatus,
   RecipientPreview,
   BulkEmailResult
 } from '../../types';
