@@ -1,4 +1,3 @@
-import {
 import { 
   Bars3Icon,
   XMarkIcon,

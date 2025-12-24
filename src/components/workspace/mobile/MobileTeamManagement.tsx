@@ -48,17 +48,6 @@ export function MobileTeamManagement({ workspace, onInviteMember }: MobileTeamMa
     },
   });
 
-  // Update role mutation
-  const updateRoleMutation = useMutation({
-    mutationFn: async ({ memberId, role }: { memberId: string; role: WorkspaceRole }) => {
-      await api.patch(`/workspaces/${workspace.id}/team-members/${memberId}`, { role });
-    },
-    onSuccess: () => {
-      queryClient.invalidateQueries({ queryKey: ['workspace-team-members', workspace.id] });
-      setSelectedMember(null);
-    },
-  });
-
   const filteredMembers = teamMembers?.filter(member => {
     const matchesSearch = member.user.name.toLowerCase().includes(searchTerm.toLowerCase()) ||
                          member.user.email.toLowerCase().includes(searchTerm.toLowerCase());
