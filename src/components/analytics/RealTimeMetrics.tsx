@@ -42,7 +42,6 @@ interface MetricCard {
   trend?: number[];
 }
 
-export default RealTimeMetrics;
 export const RealTimeMetrics: React.FC<RealTimeMetricsProps> = ({
   scope,
   eventId,
