@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import { useState } from 'react';
 import { useQuery, useMutation, useQueryClient } from '@tanstack/react-query';
 import { 
   UserPlusIcon,
@@ -142,9 +142,10 @@ export function MobileTeamManagement({ workspace, onInviteMember }: MobileTeamMa
     }
   };
 
-  const handleUpdateRole = async (memberId: string, role: WorkspaceRole) => {
-    await updateRoleMutation.mutateAsync({ memberId, role });
-  };
+  // Role update function available for future use
+  // const handleUpdateRole = async (memberId: string, role: WorkspaceRole) => {
+  //   await updateRoleMutation.mutateAsync({ memberId, role });
+  // };
 
   if (isLoading) {
     return (

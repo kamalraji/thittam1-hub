@@ -113,7 +113,7 @@ export const RealTimeMetrics: React.FC<RealTimeMetricsProps> = ({
 
     // Fallback to polling if WebSocket is not available
     const startPolling = () => {
-      intervalRef.current = setInterval(async () => {
+      intervalRef.current = window.setInterval(async () => {
         try {
           let endpoint = '/api/analytics/realtime';
 
