@@ -24,12 +24,6 @@ interface MediaFile {
   order: number;
 }
 
-
-interface TimeSlot {
-  startTime: string;
-  endTime: string;
-}
-
 enum ServiceCategory {
   VENUE = 'VENUE',
   CATERING = 'CATERING',
