@@ -1,4 +1,4 @@
-import React from 'react';
+import {
 import { 
   Bars3Icon,
   XMarkIcon,

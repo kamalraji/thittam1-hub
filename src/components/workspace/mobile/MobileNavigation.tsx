@@ -1,4 +1,4 @@
-import React from 'react';
+import {
 import { 
   XMarkIcon,
   HomeIcon,
